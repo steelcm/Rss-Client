@@ -1,1 +1,13 @@
-﻿<h2>Home Index</h2>
+﻿@model RssClientModels.DataTransferObjects.FeedDTO
+<h2>Feed list</h2>
+<ul>
+    <li>
+        <b>@Model.Name</b><br/><i>@Model.Link</i>
+    </li>
+</ul>
+@using (Html.BeginForm())
+{
+    <label accesskey="A" for="newfeedurl">Add New Feed</label>
+    <input id="newfeedurl" type="text" maxlength="255" />
+    <input id="addfeedbutton" class="button" type="submit" value="Add Feed" />
+}
