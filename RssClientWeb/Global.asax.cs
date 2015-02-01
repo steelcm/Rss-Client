@@ -19,6 +19,7 @@ namespace RssClientWeb
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterFilters(GlobalFilters.Filters);
+            AutoMapperConfig.Configure();
         }
     }
 }

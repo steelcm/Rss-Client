@@ -1,13 +1,21 @@
-﻿@model RssClientModels.DataTransferObjects.FeedDTO
+﻿@model IList<RssClientModels.DataTransferObjects.FeedDTO>
 <h2>Feed list</h2>
-<ul>
-    <li>
-        <b>@Model.Name</b><br/><i>@Model.Link</i>
-    </li>
-</ul>
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <b>
+                @Html.ActionLink(item.Name, "List", new { @id = item.Id })
+                </b><br /><i>@item.Link</i>
+            </li>
+        }
+    </ul>
+}
 @using (Html.BeginForm())
 {
     <label accesskey="A" for="newfeedurl">Add New Feed</label>
-    <input id="newfeedurl" type="text" maxlength="255" />
+    <input id="newfeedurl" name="newfeedurl" type="text" maxlength="255" />
     <input id="addfeedbutton" class="button" type="submit" value="Add Feed" />
 }

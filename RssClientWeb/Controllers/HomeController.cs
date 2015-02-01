@@ -22,14 +22,28 @@ namespace RssClientWeb.Controllers
 
         // GET: Home
         [HttpGet]
-        public ActionResult Index(string inputURL)
+        public ActionResult Index()
         {
-            if (string.IsNullOrEmpty(inputURL))
+            var allFeeds = _feedManager.List();
+            return View(allFeeds);
+        }
+
+        [HttpPost]
+        public ActionResult Index(string newfeedurl)
+        {
+            if (string.IsNullOrEmpty(newfeedurl))
             {
                 return null;
             }
-            var feedDTO = _feedManager.AddFeed(new Uri(inputURL));
-            return View(feedDTO);
+            var feedDTO = _feedManager.Add(new Uri(newfeedurl));
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult List(long id)
+        {
+            var viewModel = _feedManager.Get(id);
+            return View(viewModel);
         }
     }
 }

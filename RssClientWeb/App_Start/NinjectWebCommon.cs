@@ -11,6 +11,7 @@ namespace RssClientWeb.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using RssClientWeb.Managers;
+    using RssClientRepositories;
 
     public static class NinjectWebCommon 
     {
@@ -63,6 +64,7 @@ namespace RssClientWeb.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IFeedManager>().To<FeedManager>();
+            kernel.Bind<FeedRepository>().To<FeedRepository>();
         }        
     }
 }

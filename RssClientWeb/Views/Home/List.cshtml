@@ -1,0 +1,15 @@
+﻿@model IList<RssClientModels.ViewModels.FeedSummaryItem>
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <b>@item.Title</b> (@item.PublicationDelta)
+            </li>
+        }
+    </ul>
+}else{
+    <i>No Items Found.</i>
+}
