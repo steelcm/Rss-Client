@@ -35,7 +35,7 @@ namespace RssClientWeb.Controllers
             {
                 return null;
             }
-            var feedDTO = _feedManager.Add(new Uri(newfeedurl));
+            var feedDTO = _feedManager.Add(newfeedurl);
             return RedirectToAction("Index");
         }
 

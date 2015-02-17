@@ -11,7 +11,7 @@ namespace RssClientWeb.Managers
 {
     public interface IFeedManager
     {
-        FeedDTO Add(Uri uri);
+        FeedDTO Add(String uri);
         SyndicationFeed Load(Uri uri);
         IList<FeedDTO> List();
         IList<FeedSummaryItem> Get(long siteId);
